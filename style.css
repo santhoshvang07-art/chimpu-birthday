@@ -981,3 +981,47 @@ transform:translateY(0) scale(1.05);
 transform:translateY(0) scale(1);
 transition:0.3s ease;
 }
+
+/* 📱 Mobile adjustments */
+@media (max-width: 600px){
+
+  .page{
+    padding: 20px;
+  }
+
+  /* text scaling */
+  body{
+    font-size: 14px;
+  }
+
+  h1{
+    font-size: 22px;
+  }
+
+  /* buttons */
+  button{
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  /* polaroid images */
+  .polaroid img{
+    width: 120px;
+  }
+
+  /* polaroid container */
+  .polaroid{
+    padding: 8px 8px 25px;
+  }
+
+  /* captions */
+  .polaroid-text{
+    font-size: 13px;
+  }
+
+  /* prevent overflow issues */
+  .page *{
+    max-width: 100%;
+  }
+
+}
