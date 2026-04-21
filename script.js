@@ -1,7 +1,15 @@
+let currentPage = 1;
+let pageHistory = [];
+
 /* PAGE NAVIGATION */
 
 function nextPage(n){
 
+    console.log("Navigating to page:", n);
+    
+    if(currentPage < n){
+    pageHistory.push(currentPage);
+}
 let pages=document.querySelectorAll(".page");
 
 /* hide all pages */
@@ -15,6 +23,11 @@ if(next){
     next.classList.add("active");
 }else{
     console.error("Page not found: page"+n)
+}
+
+if(n == 1){
+    pageHistory = [];
+    currentPage = 1;
 }
 
 /* PAGE 2 LOGIC */
@@ -89,16 +102,14 @@ btn.style.pointerEvents = "none";
 }
 
 if(n==5){
-
 let btn = document.getElementById("memoryNextBtn");
-if(btn){
-btn.classList.remove("show");
-btn.style.opacity = "0";
-btn.style.pointerEvents = "none";
+
+if(openedCount < 5){
+    if(btn){
+        btn.style.opacity = "0";
+        btn.style.pointerEvents = "none";
+    }
 }
-
-openedCount = 0;
-
 }
 
 if (n == 17) {
@@ -212,10 +223,10 @@ btn.classList.remove("show");
 
 /* show text */
 setTimeout(()=>{
-hidden.innerHTML = `Stay safe and stay happy.
+hidden.innerHTML = `Stay safe and Stay happy.
 And just remember… I care about you.
 Thank you for being part of my life,
-and thank you for being you.
+and Thank you for being you.
 You are always my favourite kothii 🐒💖`;
 
 hidden.classList.add("show");
@@ -266,6 +277,9 @@ setTimeout(()=>{
 },4200);
 
 }
+currentPage = n;
+toggleBackButton();
+handlePageLoad(n);
 
 }
 
@@ -324,15 +338,18 @@ spread:180
 
 /* TYPING EFFECT */
 
-let text="Your hyper energy, your random happiness and the way you care about people make you someone special.";
+let aboutTextMessage = `Your energy, your random happiness,
+and the way you care about people…
+
+that’s what makes you different.`;
 
 let i=0;
 
 function typeEffect(){
 
-if(i<text.length){
+if(i<aboutTextMessage.length){
 
-document.getElementById("typing").innerHTML+=text.charAt(i);
+document.getElementById("typing").innerHTML+=aboutTextMessage.charAt(i);
 
 i++;
 
@@ -591,6 +608,8 @@ if(!img.classList.contains("show")){
     img.classList.add("show");
     img.classList.add("polaroid");
 
+    openedCount++;
+
     img.style.zIndex = ++zCounter;
 
     img.style.top = "50%";
@@ -813,4 +832,72 @@ setTimeout(()=>{
 next.classList.add("show");
 },1800);
 
+}
+
+function prevPage(){
+
+    if(pageHistory.length === 0) return;
+
+    let prev = pageHistory.pop();
+    currentPage = prev;
+
+    // DON'T push again
+    showPageDirect(prev);
+}
+
+function prevPage(){
+
+    if(pageHistory.length === 0) return;
+
+    let prev = pageHistory.pop();
+    currentPage = prev;
+
+    showPageDirect(prev);
+
+    // 🔥 full reset when reaching start
+    if(prev === 1){
+        pageHistory = [];
+        currentPage = 1;
+    }
+}
+
+function toggleBackButton(){
+
+    let btn = document.getElementById("globalBackBtn");
+
+    if(pageHistory.length > 0 && currentPage > 2){
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+    console.log("Current:", currentPage, "History:", pageHistory.length);
+}
+
+function handlePageLoad(n){
+
+    /* MEMORY PAGE */
+    if(n == 5){
+
+        let btn = document.getElementById("memoryNextBtn");
+
+        if(openedCount === 5){
+            if(btn){
+                btn.style.opacity = "1";
+                btn.style.pointerEvents = "auto";
+            }
+        }
+    }
+}
+
+function showPageDirect(n){
+
+    let pages = document.querySelectorAll(".page");
+
+    pages.forEach(p => p.classList.remove("active"));
+
+    let page = document.getElementById("page"+n);
+
+    if(page){
+        page.classList.add("active");
+    }
 }
