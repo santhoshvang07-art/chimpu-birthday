@@ -339,7 +339,8 @@ spread:180
 /* TYPING EFFECT */
 
 let aboutTextMessage = `Your energy, your random happiness,
-and the way you care about people…
+the way you care about people,
+and even your beautiful eyes…
 
 that’s what makes you different.`;
 
