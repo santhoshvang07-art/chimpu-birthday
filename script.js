@@ -594,13 +594,16 @@ let balloon = element.classList.contains("memoryPhoto")
 
 let img = balloon.querySelector(".memoryPhoto");
 let balloonImg = balloon.querySelector(".balloonImg");
+let caption = balloon.querySelector(".photoCaption");
 
 let allImages = document.querySelectorAll(".memoryPhoto");
 let index = Array.from(allImages).indexOf(img);
 
+
 /* ===================== */
 /* FIRST CLICK */
 /* ===================== */
+
 if(!img.classList.contains("show")){
 
     balloonImg.style.display = "none";
@@ -621,50 +624,51 @@ if(!img.classList.contains("show")){
         img.style.transform = "translate(-50%, -50%) scale(1)";
     }
 
-    
-    /* 🔥 COUNT AFTER ADDING CLASS */
+    /* show caption on first click */
+    if(caption){
+        caption.style.display = "block";
+    }
+
     let openedImages = document.querySelectorAll(".memoryPhoto.show").length;
 
     if(openedImages === 5){
 
-    setTimeout(()=>{
-        let btn = document.getElementById("memoryNextBtn");
+        setTimeout(()=>{
 
-        if(btn){
+            let btn = document.getElementById("memoryNextBtn");
 
-            /* force visible */
-            btn.style.opacity = "0";
-            btn.style.pointerEvents = "none";
+            if(btn){
 
-            /* small delay to trigger animation */
-            setTimeout(()=>{
-                btn.style.opacity = "1";
-                btn.style.pointerEvents = "auto";
-            },50);
+                btn.style.opacity = "0";
+                btn.style.pointerEvents = "none";
 
-        }
+                setTimeout(()=>{
+                    btn.style.opacity = "1";
+                    btn.style.pointerEvents = "auto";
+                },50);
 
-    },700);
-}
-console.log(document.getElementById("memoryNextBtn"));
+            }
 
-console.log("Opened:", openedImages);
+        },700);
+    }
 
     loveBurst(window.innerWidth/2, window.innerHeight/2);
 
     return;
 }
 
+
 /* ===================== */
 /* SECOND CLICK (SCATTER) */
 /* ===================== */
+
 if(!img.classList.contains("scattered")){
 
     img.classList.add("scattered");
 
     let positions = [
-        {top:"30%", left:"20%", rotate:-15},
-        {top:"25%", left:"70%", rotate:12},
+        {top:"35%", left:"25%", rotate:-15},
+        {top:"30%", left:"70%", rotate:12},
         {top:"65%", left:"25%", rotate:-10},
         {top:"70%", left:"75%", rotate:15},
         {top:"50%", left:"50%", rotate:5}
@@ -672,20 +676,24 @@ if(!img.classList.contains("scattered")){
 
     let pos = positions[index];
 
-    /* 🔥 z-index handling */
+    /* hide caption on second click */
+    if(caption){
+        caption.style.display = "none";
+    }
+
     if(index === 4){
         img.style.zIndex = 9999;
     } else {
         img.style.zIndex = ++zCounter;
     }
 
-    /* move to position */
     img.style.top = pos.top;
     img.style.left = pos.left;
 
-    /* 🔥 shrink + rotate */
-    img.style.transform = `translate(-50%, -50%) scale(1) rotate(${pos.rotate}deg)`;
+    img.style.transform =
+        `translate(-50%, -50%) scale(1) rotate(${pos.rotate}deg)`;
 }
+
 }
 
 let moodLines = [
@@ -786,12 +794,11 @@ function giftTyping() {
 
 /* TEXT */
 let giftHintMessage = 
-`Okaroju niku okati kavali anukoni dorakale ani disappoint ainav
-Gurthundhaaa...
+`Nikoka konchem special ga idham anukunna…
+kani adhi dorakaledhu 😔
 
-Andhuke nikosam adhi techina
-
-Dhenigurinchi matladuthunnano artham ayyindhi anukuntaaa👀`;
+Andhuke ippatiki chocolate tho saripettina raa…
+choorrryyy 😔🍫`;
 
 let gift2Message = 
 `Adhokkate kaadu…
@@ -807,7 +814,8 @@ let listenMessage =
 
 I listen.
 
-I remember.`;
+And somehow,
+I remember everything :)`;
 
 function revealPhoto(){
 
@@ -900,4 +908,16 @@ function showPageDirect(n){
     if(page){
         page.classList.add("active");
     }
+}
+
+function enterFullscreen(){
+
+  let el = document.documentElement;
+
+  if(el.requestFullscreen){
+    el.requestFullscreen();
+  }
+
+  // then go to next page
+  nextPage(1);
 }
