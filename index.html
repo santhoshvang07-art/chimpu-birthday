@@ -7,6 +7,7 @@
 <title>For Chimpuuu!!!</title>
 
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
@@ -27,7 +28,7 @@
         I made something small for your birthday.
     </p>
 
-    <button class="startBtn" onclick="startStory()">
+    <button class="startBtn" onclick="startStory(), enterFullscreen()">
         See this 👀
     </button>
 
@@ -104,31 +105,41 @@ Sare naaaaa.......
 
     <h2 class="memorytitle">POP a few memories...</h2>
 
+<p class="memoryHint">
+    Pop the balloons and tap the image popped to see the magic ✨
+</p>
+
     <div class="balloonContainer">
 
         <div class="balloon" onclick="openMemory(this)">
             <img src="images/balloons/bl1.png" class="balloonImg">
-            <img src="images/photo1.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <img src="images/memories/photo1.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <div class="photoCaption">Still one of my favourites (●'◡'●)</div>
         </div>
 
         <div class="balloon" onclick="openMemory(this)">
             <img src="images/balloons/bl2.png" class="balloonImg">
-            <img src="images/photo2.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <img src="images/memories/photo2.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <div class="photoCaption">Fest day + this look >> 😌</div>
         </div>
 
         <div class="balloon" onclick="openMemory(this)">
             <img src="images/balloons/bl3.png" class="balloonImg">
-            <img src="images/photo3.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <img src="images/memories/photo3.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <div class="photoCaption">That random day 😜</div>
         </div>
 
         <div class="balloon" onclick="openMemory(this)">
             <img src="images/balloons/bl4.png" class="balloonImg">
-            <img src="images/photo4.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <img src="images/memories/photo4.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <div class="photoCaption">Holi aa Dayyamm aa 👻😂</div>
         </div>
 
         <div class="balloon" onclick="openMemory(this)">
             <img src="images/balloons/bl5.png" class="balloonImg">
-            <img src="images/photo5.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <img src="images/memories/photo5.jpg" class="memoryPhoto" onclick="openMemory(this)">
+            <div class="photoCaption">Already cheppina kadha…
+nak nuv inka aa chinna Spoorthy lane anipisthav 😂</div>
         </div>
 
     </div>
@@ -351,7 +362,7 @@ Time theeskoni aina sare malli naa kothii natho mundhula comfortable ga undagali
 <div class="finalContainer">
 
     <h1 id="endText">
-        That’s all… just wanted to see you smile.
+        That’s all… just wanted to make you smile.😁
     </h1>
 
     <h2 id="endText2"></h2>
@@ -366,4 +377,4 @@ Time theeskoni aina sare malli naa kothii natho mundhula comfortable ga undagali
 <script src="script.js" defer></script>
 
 </body>
-</html> 
+</html>
