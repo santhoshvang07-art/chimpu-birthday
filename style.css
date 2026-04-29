@@ -1087,6 +1087,12 @@ pointer-events: none;
     width:110px;
   }
 
+  #moodText{
+    font-weight: 500;
+    line-height: 1.3;
+    font-size:15px;
+  }
+
 }
 
 html, body{
