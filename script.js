@@ -691,8 +691,10 @@ if(!img.classList.contains("scattered")){
     img.style.top = pos.top;
     img.style.left = pos.left;
 
-    img.style.transform =
-        `translate(-50%, -50%) scale(1) rotate(${pos.rotate}deg)`;
+    let scaleValue = window.innerWidth <= 600 ? 0.75 : 1;
+
+img.style.transform =
+`translate(-50%, -50%) scale(${scaleValue}) rotate(${pos.rotate}deg)`;
 }
 
 }
